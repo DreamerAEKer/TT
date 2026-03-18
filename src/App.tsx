@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mic, MicOff, Volume2, RotateCcw, Languages, ArrowUpDown, Smartphone, History, Settings } from 'lucide-react';
+import { Mic, MicOff, Volume2, RotateCcw, Languages, ArrowUpDown, Smartphone } from 'lucide-react';
 import { speechService } from './services/SpeechService';
 import { translationService } from './services/TranslationService';
 import { clsx, type ClassValue } from 'clsx';
@@ -150,7 +150,7 @@ export default function App() {
     }
   });
 
-  const translationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const translationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const performTranslation = async (pane: 'top' | 'bottom', text: string, isFinal: boolean) => {
     if (!text.trim()) return;
